@@ -1,0 +1,39 @@
+MODEL:
+  WEIGHT: ""
+  ARCHITECTURE: "TAN"
+  TAN:
+    NUM_CLIPS: 64
+    FEATPOOL:
+      POOLER: "FeatAvgPool"
+      INPUT_SIZE: 500
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 4
+    FEAT2D:
+      POOLING_COUNTS: [15,8,8]
+    INTEGRATOR:
+      QUERY_HIDDEN_SIZE: 512
+      LSTM:
+        NUM_LAYERS: 3
+        BIDIRECTIONAL: False
+    PREDICTOR:
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 9
+      NUM_STACK_LAYERS: 4
+    LOSS:
+      MIN_IOU: 0.5
+      MAX_IOU: 1.0
+DATASETS:
+  TRAIN: ("activitynet_train", "activitynet_val")
+  TEST: ("activitynet_test",)
+INPUT:
+  NUM_PRE_CLIPS: 256
+  PRE_QUERY_SIZE: 300
+DATALOADER:
+  NUM_WORKERS: 16
+SOLVER:
+  LR: 0.0005
+  BATCH_SIZE: 32
+  MILESTONES: (3, 4)
+  MAX_EPOCH: 5
+TEST:
+  NMS_THRESH: 0.5

@@ -1,0 +1,39 @@
+MODEL:
+  WEIGHT: ""
+  ARCHITECTURE: "TAN"
+  TAN:
+    NUM_CLIPS: 128
+    FEATPOOL:
+      POOLER: "FeatAvgPool"
+      INPUT_SIZE: 4096
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 2
+    FEAT2D:
+      POOLING_COUNTS: [15,8,8,8]
+    INTEGRATOR: 
+      QUERY_HIDDEN_SIZE: 512
+      LSTM:
+        NUM_LAYERS: 3
+        BIDIRECTIONAL: False
+    PREDICTOR:
+      HIDDEN_SIZE: 512
+      KERNEL_SIZE: 5
+      NUM_STACK_LAYERS: 8
+    LOSS:
+      MIN_IOU: 0.3
+      MAX_IOU: 0.7
+DATASETS:
+  TRAIN: ("tacos_train", "tacos_val")
+  TEST: ("tacos_test",)
+INPUT:
+  NUM_PRE_CLIPS: 256
+  PRE_QUERY_SIZE: 300
+DATALOADER:
+  NUM_WORKERS: 16
+SOLVER:
+  LR: 0.001
+  BATCH_SIZE: 32
+  MILESTONES: (7, 9)
+  MAX_EPOCH: 10
+TEST:
+  NMS_THRESH: 0.4
