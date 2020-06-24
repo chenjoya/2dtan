@@ -4,7 +4,6 @@ MODEL:
   TAN:
     NUM_CLIPS: 64
     FEATPOOL:
-      POOLER: "FeatAvgPool"
       INPUT_SIZE: 500
       HIDDEN_SIZE: 512
       KERNEL_SIZE: 4
