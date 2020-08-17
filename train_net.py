@@ -38,7 +38,7 @@ def train(cfg, local_rank, distributed):
         cfg, model, optimizer, scheduler, output_dir, save_to_disk
     )
 
-    if cfg.MODEL.WEIGHT != "":
+    if cfg.MODEL.WEIGHT == "":
         extra_checkpoint_data = checkpointer.load(f=None, use_latest=True)
     else:
         extra_checkpoint_data = checkpointer.load(f=cfg.MODEL.WEIGHT, use_latest=False)
