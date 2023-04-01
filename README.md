@@ -1,3 +1,5 @@
+# NOTE: this repo has been deprecated. Please use https://github.com/microsoft/VideoX
+ 
 # 2D-TAN (Optimized)  
 
 ## Introduction
